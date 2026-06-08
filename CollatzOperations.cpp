@@ -3,6 +3,8 @@ using namespace std;
 
 #define ll long long
 #define ull unsigned ll
+#define si short int
+#define usi unsigned si
 
 ull CollatzRegrOp(ull pol){
   if(pol&1 == 0){
@@ -15,16 +17,16 @@ ull CollatzFastOp(ull pol){
   return ((pol^bit_floor(pol))<<1)^pol; // multiplying pol by x+1 and deleting the leading term, proven to be eqiuvelent(but faster bc it skips diviing) to the reguler F2[x] collatz operation
 }
 
-int CollatzRegCollapseTime(ull pol){
-  int ans = 0;
+usi CollatzRegCollapseTime(ull pol){
+  usi ans = 0;
   while(pol!=1){
     pol = CollatzRegrOp(pol);
     ans++;
   }
 }
 
-int CollatzFastCollapseTime(ull pol){
-  int ans = 0;
+usi CollatzFastCollapseTime(ull pol){
+  usi ans = 0;
   while(pol!=1){
     pol = CollatzFastOp(pol);
     ans++;
