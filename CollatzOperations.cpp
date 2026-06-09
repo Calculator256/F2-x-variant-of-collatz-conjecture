@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <bit>
 using namespace std;
 
 #define ll long long
@@ -10,7 +10,7 @@ ull CollatzRegrOp(ull pol){
   if(pol&1 == 0){
     return pol>>1; // dividing by x
   }
-  return (pol<<1)^(pol^1) // multiplying by x+1 and adding 1
+  return (pol<<1)^(pol^1); // multiplying by x+1 and adding 1
 }
 
 ull CollatzFastOp(ull pol){
