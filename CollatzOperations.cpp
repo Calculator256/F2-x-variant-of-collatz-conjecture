@@ -50,10 +50,10 @@ int main(){
   int k = 0;
   for(ull i = 1; i < N; i*=2){
     k++;
-    ull max = 0;
+    ull maxTime = 0;
     for(ull j = i*2-1; j >= i; j-=2){
-      max = max(CollatzFastCollapseTimeDp[j], max);
+      maxTime = max(CollatzFastCollapseTimeDp[j], maxTime);
     }
-    cout << "max collapse time(fast operation) for length " << k << " is " << max << "\n";
+    cout << "max collapse time(fast operation) for length " << k << " is " << maxTime << "\n";
   }
 }
