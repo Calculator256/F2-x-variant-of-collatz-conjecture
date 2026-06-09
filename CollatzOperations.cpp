@@ -27,6 +27,7 @@ usi CollatzRegCollapseTime(ull pol){
     pol = CollatzRegrOp(pol);
     ans++;
   }
+  return ans;
 }
 
 usi CollatzFastCollapseTime(ull pol){
@@ -35,6 +36,7 @@ usi CollatzFastCollapseTime(ull pol){
     pol = CollatzFastOp(pol);
     ans++;
   }
+  return ans;
 }
 
 int main(){
