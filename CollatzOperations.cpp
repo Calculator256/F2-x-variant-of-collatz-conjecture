@@ -8,7 +8,7 @@ using namespace std;
 #define ull unsigned ll
 #define si short int
 #define usi unsigned si
-#define n 10
+#define n 20
 #define N 1<<n
 
 ull CollatzRegrOp(ull pol){
