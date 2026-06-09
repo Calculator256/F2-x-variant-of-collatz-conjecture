@@ -1,6 +1,7 @@
 #include <vector>
 #include <bit>
 #include <algorithm>
+#include <iostream>
 using namespace std;
 
 #define ll long long
@@ -50,7 +51,7 @@ int main(){
   int k = 0;
   for(ull i = 1; i < N; i*=2){
     k++;
-    ull maxTime = 0;
+    usi maxTime = 0;
     for(ull j = i*2-1; j >= i; j-=2){
       maxTime = max(CollatzFastCollapseTimeDp[j], maxTime);
     }
