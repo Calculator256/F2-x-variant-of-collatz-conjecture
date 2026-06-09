@@ -1,10 +1,14 @@
+#include <vector>
 #include <bit>
+#include <algorithm>
 using namespace std;
 
 #define ll long long
 #define ull unsigned ll
 #define si short int
 #define usi unsigned si
+#define n 10
+#define N 1<<n
 
 ull CollatzRegrOp(ull pol){
   if(pol&1 == 0){
@@ -30,5 +34,24 @@ usi CollatzFastCollapseTime(ull pol){
   while(pol!=1){
     pol = CollatzFastOp(pol);
     ans++;
+  }
+}
+
+int main(){
+  vector<usi> CollatzFastCollapseTimeDp(N);
+  CollatzFastCollapseTimeDp[1] = 0;
+  for(ull i = 1; i < N; i*=2){
+    for(ull j = i*2-1; j >= i; j-=2){
+      CollatzFastCollapseTimeDp[j] = CollatzFastCollapseTimeDp[CollatzFastOp(j)]+1;
+    }
+  }
+  int k = 0;
+  for(ull i = 1; i < N; i*=2){
+    k++;
+    ull max = 0;
+    for(ull j = i*2-1; j >= i; j-=2){
+      max = max(CollatzFastCollapseTimeDp[j], max);
+    }
+    cout << "max collapse time(fast operation) for length " << k << " is " << max << "\n";
   }
 }
