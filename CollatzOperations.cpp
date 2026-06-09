@@ -43,13 +43,14 @@ usi CollatzFastCollapseTime(ull pol){
 int main(){
   vector<usi> CollatzFastCollapseTimeDp(N);
   CollatzFastCollapseTimeDp[1] = 0;
-  for(ull i = 1; i < N; i*=2){
+  for(ull i = 2; i < N; i*=2){
     for(ull j = i*2-1; j >= i; j-=2){
       CollatzFastCollapseTimeDp[j] = CollatzFastCollapseTimeDp[CollatzFastOp(j)]+1;
     }
   }
-  int k = 0;
-  for(ull i = 1; i < N; i*=2){
+  int k = 1;
+  cout << "max collapse time(fast operation) for length " << k << " is " << 0 << "\n";
+  for(ull i = 2; i < N; i*=2){
     k++;
     usi maxTime = 0;
     for(ull j = i*2-1; j >= i; j-=2){
