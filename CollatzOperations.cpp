@@ -41,22 +41,27 @@ uc CollatzFastCollapseTime(ull pol){
   return ans;
 }
 
-int main(){
-  vector<uc> CollatzFastCollapseTimeDp(N);
-  CollatzFastCollapseTimeDp[1] = 0;
-  for(ull i = 2; i < N; i*=2){
-    for(ull j = i*2-1; j >= i; j-=2){
-      CollatzFastCollapseTimeDp[j] = CollatzFastCollapseTimeDp[CollatzFastOp(j)]+1;
-    }
-  }
-  int k = 1;
-  cout << "max collapse time(fast operation) for length " << k << " is " << 0 << "\n";
-  for(ull i = 2; i < N; i*=2){
-    k++;
-    uc maxTime = 0;
-    for(ull j = i*2-1; j >= i; j-=2){
-      maxTime = max(CollatzFastCollapseTimeDp[j], maxTime);
-    }
-    cout << "max collapse time(fast operation) for length " << k << " is " << +maxTime << "\n";
-  }
+int main() {
+	vector<uc> CollatzFastCollapseTimeDp(2*N);
+	CollatzFastCollapseTimeDp[1] = 0;
+	int k = 1;
+	cout << "max collapse time(fast operation) for length " << k << " is " << 0 << "\n";
+	for(ull i = 2; i < N; i*=2) {
+		k++;
+		uc maxTime = 0;
+		for(ull j = i*2-1; j >= i; j-=2) {
+			CollatzFastCollapseTimeDp[j] = CollatzFastCollapseTimeDp[CollatzFastOp(j)]+1;
+			maxTime = max(CollatzFastCollapseTimeDp[j], maxTime);
+		}
+		cout << "max collapse time(fast operation) for length " << k << " is " << +maxTime << "\n";
+		cout << "achieved by";
+		for(ull j = i*2-1; j >= i; j-=2) {
+			if(CollatzFastCollapseTimeDp[j] == maxTime){
+			    cout << " " << j;
+			}
+			
+		}
+		cout << "\n";
+	}
+	return 0;
 }
