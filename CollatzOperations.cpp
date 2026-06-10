@@ -8,6 +8,7 @@ using namespace std;
 #define ull unsigned ll
 #define si short int
 #define usi unsigned si
+#define uc unsigned char
 #define n 20
 #define N 1<<n
 
@@ -22,8 +23,8 @@ ull CollatzFastOp(ull pol){
   return ((pol^bit_floor(pol))<<1)^pol; // multiplying pol by x+1 and deleting the leading term, proven to be eqiuvelent(but faster bc it skips diviing) to the reguler F2[x] collatz operation
 }
 
-usi CollatzRegCollapseTime(ull pol){
-  usi ans = 0;
+uc CollatzRegCollapseTime(ull pol){
+  uc ans = 0;
   while(pol!=1){
     pol = CollatzRegrOp(pol);
     ans++;
@@ -31,8 +32,8 @@ usi CollatzRegCollapseTime(ull pol){
   return ans;
 }
 
-usi CollatzFastCollapseTime(ull pol){
-  usi ans = 0;
+uc CollatzFastCollapseTime(ull pol){
+  uc ans = 0;
   while(pol!=1){
     pol = CollatzFastOp(pol);
     ans++;
@@ -41,7 +42,7 @@ usi CollatzFastCollapseTime(ull pol){
 }
 
 int main(){
-  vector<usi> CollatzFastCollapseTimeDp(N);
+  vector<uc> CollatzFastCollapseTimeDp(N);
   CollatzFastCollapseTimeDp[1] = 0;
   for(ull i = 2; i < N; i*=2){
     for(ull j = i*2-1; j >= i; j-=2){
@@ -52,10 +53,10 @@ int main(){
   cout << "max collapse time(fast operation) for length " << k << " is " << 0 << "\n";
   for(ull i = 2; i < N; i*=2){
     k++;
-    usi maxTime = 0;
+    uc maxTime = 0;
     for(ull j = i*2-1; j >= i; j-=2){
       maxTime = max(CollatzFastCollapseTimeDp[j], maxTime);
     }
-    cout << "max collapse time(fast operation) for length " << k << " is " << maxTime << "\n";
+    cout << "max collapse time(fast operation) for length " << k << " is " << +maxTime << "\n";
   }
 }
